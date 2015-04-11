@@ -42,13 +42,16 @@ one_test = []
 for s in stimulus_codes:
     for r in user_input:
         for t in rts:
-            one_test = [s, r, assess_response(s, t, r)]
+            one_test = [s, t, r, assess_response(s, t, r)]
             testing_list.append(one_test)
 for t in testing_list:
     print t
 
-print "opening file results.txt"
+print "opening nback_testing_results.csv"
 outfile = open('nback_testing_results.csv', 'w')
+# write headers
+outfile.write('stimulus code,rt,user input,test result\n')
+# write tests
 for t in testing_list:
     line = str(t)
     line = line.strip('[')
