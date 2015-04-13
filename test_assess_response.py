@@ -1,6 +1,8 @@
 __author__ = 'erich_000'
 from assess_response import assess_response
 
+no_rt = None
+zero_rt = 0
 early_rt = 56
 good_rt = 600
 late_rt = 1002
@@ -35,7 +37,7 @@ def populate_codes():
     return stimulus_codes, user_input
 #print assess_response(7, 500, 1)
 stimulus_codes, user_input = populate_codes()
-rts = [early_rt, good_rt, late_rt]
+rts = [no_rt, zero_rt, early_rt, good_rt, late_rt]
 # make list of lots of inputs and results
 testing_list = []
 one_test = []
@@ -46,9 +48,10 @@ for s in stimulus_codes:
             testing_list.append(one_test)
 for t in testing_list:
     print t
+outfile_name = 'nback_testing_results.csv'
 
-print "opening nback_testing_results.csv"
-outfile = open('nback_testing_results.csv', 'w')
+print "opening", outfile_name
+outfile = open(outfile_name, 'w')
 # write headers
 outfile.write('stimulus code,rt,user input,test result\n')
 # write tests

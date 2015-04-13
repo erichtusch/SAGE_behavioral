@@ -12,11 +12,12 @@ def make_response_codes(output_string):
     return response_codes
 
 
-def assess_response(stim_code, rt, user_input=None):
+def assess_response(stim_code, rt=None, user_input=None):
     # assessed_response = assess_response(stim_code, user_input, rt)
     """
 
     :type user_input: int
+    :type rt: float
     """
     print "assessing response: "
     print "stim_code =", stim_code
@@ -28,10 +29,10 @@ def assess_response(stim_code, rt, user_input=None):
 
     min_rt = 200
     max_rt = 1000
-    if rt < min_rt:
+    if rt < min_rt and user_input > 0:
         # return early (code 5)
         return response_codes[4]
-    elif rt > max_rt:
+    elif rt > max_rt and user_input > 0:
         # return late (code 6)
         return response_codes[5]
 
